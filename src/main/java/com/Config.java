@@ -14,7 +14,7 @@ public class Config {
     @Bean
     public DataSource ds(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.postgres.Driver");
+        dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
         dataSource.setUsername("postgres");
         dataSource.setPassword("admin");
@@ -22,6 +22,6 @@ public class Config {
     }
     @Bean
     public JdbcTemplate jdbc(){
-        return new JdbcTemplate(jdbc().getDataSource());
+        return new JdbcTemplate(ds());
     }
 }
