@@ -5,9 +5,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 
@@ -17,6 +15,16 @@ public class ControllerMVC {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+
+    @GetMapping("/batch")
+    public String batch(){
+        return "batch";
+    }
+
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin";
+    }
 
     @PostMapping("/customers")
     public String request2(){
@@ -29,7 +37,7 @@ public class ControllerMVC {
         arrayList.add(customer2);
         String query = "INSERT INTO customers(id, name, email) VALUES (?, ?, ?)";
         jdbcTemplate.batchUpdate(query, new PrepSt(arrayList));
-        return "batch";
+        return "ok";
         //создать страницу где будет кнопка отправляющая пост запрос на /customers
     }
 
