@@ -1,0 +1,14 @@
+<form action="/user" method="post">
+    <div class="container">
+        <h1>Database</h1>
+        <p>Please fill this form to add to the database</p>
+        <hr/>
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id="email" required/>
+        <label for="name"><b>Name</b></label>
+        <input type="text" placeholder="Enter Name" name="name" id ="name" required/>
+        <button type="submit" class="registerbtn">ADD</button>
+    </div>
+</form>

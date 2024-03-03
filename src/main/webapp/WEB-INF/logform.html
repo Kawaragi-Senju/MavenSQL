@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form th:action="@{/login}" method="post">
+  <div class="container">
+    <h1>Log</h1>
+    <p>login and password please!</p>
+    <hr/>
+    <input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}"/>
+    <label for="username"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="username" id="username" required/>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" id ="password" required/>
+    <button type="submit" class="Loggbtn">ADD</button>
+  </div>
+</form>
+</body>
+</html>

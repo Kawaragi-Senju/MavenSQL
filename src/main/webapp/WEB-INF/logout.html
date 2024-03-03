@@ -5,12 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-I'm admin!
-<form th:action="@{/logoutp}" method="post">
+<form th:action="@{/logout}" method="post">
     <input type="hidden" name="${_csrf.parameterName}"
            value="${_csrf.token}"/>
     <input type="submit">Logout</input>
 </form>
-<input>
 </body>
 </html>

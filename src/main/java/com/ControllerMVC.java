@@ -21,9 +21,29 @@ public class ControllerMVC {
         return "batch";
     }
 
+    @GetMapping("/logForm")
+    public String log(){
+        return "logform";
+    }
+
     @GetMapping("/admin")
     public String admin(){
         return "admin";
+    }
+
+    @GetMapping("/newuser")
+    public String reg(){
+        return "registration";
+    }
+
+    @PostMapping("/user")
+    public String registration(@RequestParam(name="name")String name, @RequestParam(name="email") String email){
+        Customer customer = new Customer();
+        customer.setName(name);
+        customer.setEmail(email);
+        String query = "INSERT INTO customers(id, name, email) VALUES (?, ?, ?)";
+        jdbcTemplate.update(query, 6, name, email);
+        return "ok";
     }
 
     @PostMapping("/customers")
