@@ -13,12 +13,13 @@
         <logout logout-url="/logoutp" logout-success-url="/logForm"/>
 
     </http>
-    <authentication-manager>
+    <authentication-manager alias="authenticationManager">
         <authentication-provider>
-            <user-service>
-                <user name="admin" password="{noop}1234" authorities="ROLE_ADMIN" />
-                <user name="user" password="{noop}4321" authorities="ROLE_USER" />
-            </user-service>
+            <jdbc-user-service id="jdbcUserService" data-source-ref="dataSource"
+                               users-by-username-query="
+                 select login ,password from users where login=?"
+                               authorities-by-username-query=
+                                       "select login, role from users where login = ?"/>
         </authentication-provider>
     </authentication-manager>
 </beans:beans>
